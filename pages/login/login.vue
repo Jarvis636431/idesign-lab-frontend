@@ -36,8 +36,9 @@ export default {
 			console.log('登录', this.form)
 		},
 		goToRegister() {
-			// TODO: 跳转到注册页面
-			console.log('跳转到注册页面')
+			uni.navigateTo({
+				url: '/pages/register/register'
+			})
 		},
 		togglePassword() {
 			this.showPassword = !this.showPassword
