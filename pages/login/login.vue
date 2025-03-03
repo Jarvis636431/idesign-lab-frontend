@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="header-section">
 			<image class="logo" src="/static/logo.png"></image>
-			<view class="title-text">欢迎使用天津大学机械工程学院工业设计实验室预约系统</view>
+			<view class="title-text">欢迎使用天津大学机械工程学院<br/>工业设计实验室预约系统</view>
 		</view>
 		<view class="login-section">
 			<view class="login-form">
@@ -14,9 +14,12 @@
 						<text class="password-toggle" @click="togglePassword">👁</text>
 					</view>
 				</view>
+				<view class="forgot-password">
+					<text class="link" @click="handleForgotPassword">忘记密码</text>
+				</view>
 				<button class="login-btn" @click="handleLogin">登录</button>
 				<view class="register-link">
-					<text>还没有账号？</text>
+					<text>还没有账号？点击</text>
 					<text class="link" @click="goToRegister">注册</text>
 				</view>
 			</view>
@@ -57,6 +60,20 @@ export default {
 				})
 			}
 		},
+		handleForgotPassword() {
+			uni.showModal({
+				title: '忘记密码',
+				content: '请联系管理员重置密码',
+				confirmText: '确定',
+				confirmColor: '#6D45B8',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						console.log('用户点击确定');
+					}
+				}
+			});
+		},
 		goToRegister() {
 			uni.navigateTo({
 				url: '/pages/register/register'
@@ -87,7 +104,7 @@ export default {
     flex: 1;
     background-color: #fff;
     border-radius: 40rpx 40rpx 0 0;
-    margin-top: -40rpx;
+    margin-top: -20rpx;
     padding: 30rpx 30rpx 20rpx;
     z-index: 1;
     display: flex;
@@ -99,32 +116,31 @@ export default {
 	margin-top: 60rpx;
 	margin-bottom: 20rpx;
 }
-
 .title-text {
-	font-size: 28rpx;
-	color: #333;
+	font-family: Inika;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 30px;
+	letter-spacing: -1.5%;
 	text-align: center;
+	color: #333;
 	margin-bottom: 40rpx;
 }
-
 .login-form {
 	width: 100%;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 }
-
 .form-title {
 	font-size: 36rpx;
 	font-weight: bold;
 	color: #333;
-	margin-bottom: 60rpx;
+	margin: 100rpx 0 60rpx;
 }
-
 .input-group {
 	width: 100%;
 }
-
 .input-field {
 	width: 100%;
 	height: 90rpx;
@@ -134,11 +150,9 @@ export default {
 	margin-bottom: 20rpx;
 	font-size: 28rpx;
 }
-
 .password-container {
 	position: relative;
 }
-
 .password-toggle {
 	position: absolute;
 	right: 20rpx;
@@ -164,6 +178,12 @@ export default {
     margin-bottom: 20rpx;
     font-size: 28rpx;
     color: #999;
+}
+.forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20rpx;
+    font-size: 28rpx;
 }
 .link {
 	color: #6D45B8;
