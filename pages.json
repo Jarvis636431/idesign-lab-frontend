@@ -11,13 +11,56 @@
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
+		},
+		{
+			"path": "pages/booking/booking",
+			"style": {
+				"navigationBarTitleText": "预约"
+			}
+		},
+		{
+			"path": "pages/my-bookings/my-bookings",
+			"style": {
+				"navigationBarTitleText": "我的预约"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "个人信息"
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "实验室预约系统",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#6D45B8",
+		"backgroundColor": "#FFFFFF",
+		"list": [
+			{
+				"pagePath": "pages/booking/booking",
+				"text": "预约",
+				"iconPath": "static/booking.png",
+				"selectedIconPath": "static/booking-active.png"
+			},
+			{
+				"pagePath": "pages/my-bookings/my-bookings",
+				"text": "我的预约",
+				"iconPath": "static/booking.png",
+				"selectedIconPath": "static/booking-active.png"
+			},
+			{
+				"pagePath": "pages/index/index",
+				"text": "我的",
+				"iconPath": "static/user.png",
+				"selectedIconPath": "static/user-active.png"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }
