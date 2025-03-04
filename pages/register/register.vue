@@ -1,21 +1,23 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="title-text">注册账号</view>
-		<view class="tab-container">
-			<view 
-				class="tab-item" 
-				:class="{ active: activeTab === 'student' }" 
-				@click="activeTab = 'student'"
-			>
-				学生注册
-			</view>
-			<view 
-				class="tab-item" 
-				:class="{ active: activeTab === 'temp' }" 
-				@click="activeTab = 'temp'"
-			>
-				临时用户申请
+		<view class="header-section">
+			<text class="back-btn" @click="goToLogin">←</text>
+			<view class="title-text">注册账号</view>
+			<view class="tab-container">
+				<view 
+					class="tab-item" 
+					:class="{ active: activeTab === 'student' }" 
+					@click="activeTab = 'student'"
+				>
+					学生注册
+				</view>
+				<view 
+					class="tab-item" 
+					:class="{ active: activeTab === 'temp' }" 
+					@click="activeTab = 'temp'"
+				>
+					临时用户申请
+				</view>
 			</view>
 		</view>
 		<view class="register-form" v-if="activeTab === 'student'">
@@ -34,9 +36,12 @@
 		<view class="register-form" v-else>
 			<view class="input-group">
 				<input type="text" v-model="tempForm.name" placeholder="姓名" class="input-field" />
-				<input type="text" v-model="tempForm.phone" placeholder="电话" class="input-field" />
 				<input type="text" v-model="tempForm.purpose" placeholder="用途" class="input-field" />
-				<input type="date" v-model="tempForm.date" placeholder="活动日期" class="input-field" />
+				<input type="text" v-model="tempForm.phone" placeholder="电话" class="input-field" />
+				<view class="password-container">
+					<input :type="showPassword ? 'text' : 'password'" v-model="tempForm.password" placeholder="密码" class="input-field" />
+					<text class="password-toggle" @click="togglePassword">👁</text>
+				</view>
 			</view>
 			<button class="register-btn" @click="handleTempRegister">申请</button>
 		</view>
@@ -61,9 +66,9 @@ export default {
 			},
 			tempForm: {
 				name: '',
-				phone: '',
 				purpose: '',
-				date: ''
+				phone: '',
+				password: ''
 			},
 			showPassword: false
 		}
@@ -73,16 +78,22 @@ export default {
 			// TODO: 实现学生注册逻辑
 			console.log('学生注册', this.studentForm)
 			// 注册完成后返回登录页面
-			uni.navigateBack()
+			uni.navigateBack({
+				delta: 1
+			})
 		},
 		handleTempRegister() {
 			// TODO: 实现临时用户申请逻辑
 			console.log('临时用户申请', this.tempForm)
 			// 申请完成后返回登录页面
-			uni.navigateBack()
+			uni.navigateBack({
+				delta: 1
+			})
 		},
 		goToLogin() {
-			uni.navigateBack()
+			uni.navigateBack({
+				delta: 1
+			})
 		},
 		togglePassword() {
 			this.showPassword = !this.showPassword
@@ -95,32 +106,35 @@ export default {
 .content {
 	display: flex;
 	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.header-section {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	padding: 0 30rpx;
-	background-color: #fff;
-	min-height: 100vh;
-}
-
-.logo {
-	width: 120rpx;
-	height: 120rpx;
-	margin-top: 100rpx;
-	margin-bottom: 20rpx;
-}
-
-.title-text {
-	font-size: 28rpx;
-	color: #333;
-	text-align: center;
-	margin-bottom: 60rpx;
+	padding: 40rpx 20rpx;
+	background-color: #D9D9D9;
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .register-form {
+	flex: 1;
 	width: 100%;
+	background-color: #fff;
+	margin-top: -20rpx;
+	padding: 50rpx 20rpx 20rpx;
+	z-index: 1;
+	box-sizing: border-box;
 }
 
 .input-group {
 	width: 100%;
+	box-sizing: border-box;
 }
 
 .input-field {
@@ -175,19 +189,23 @@ export default {
 	width: 100%;
 	margin-bottom: 30rpx;
 	border-bottom: 1px solid #eee;
+	background-color: #D9D9D9;
 }
 
 .tab-item {
-	flex: 1;
-	text-align: center;
-	padding: 20rpx 0;
-	font-size: 28rpx;
-	color: #999;
-	position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 20rpx 0;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 32rpx;
+    line-height: 38.72rpx;
+    letter-spacing: -0.015em;
+    color: #999;
 }
 
 .tab-item.active {
-	color: #6D45B8;
+    color: #6D45B8;
 }
 
 .tab-item.active::after {
@@ -196,9 +214,34 @@ export default {
 	bottom: -2rpx;
 	left: 50%;
 	transform: translateX(-50%);
-	width: 40rpx;
+	width: 80rpx;
 	height: 4rpx;
 	background-color: #6D45B8;
 	border-radius: 2rpx;
 }
+
+.tab-item.active::after {
+	content: '';
+	position: absolute;
+	bottom: -2rpx;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80rpx;
+	height: 4rpx;
+	background-color: #6D45B8;
+	border-radius: 2rpx;
+}
+.back-btn {
+	position: absolute;
+	top: 60rpx;
+	left: 30rpx;
+	width: 60rpx;
+	height: 60rpx;
+	background-color: #fff;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 </style>
