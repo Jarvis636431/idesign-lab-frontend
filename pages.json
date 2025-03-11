@@ -44,19 +44,16 @@
 		"list": [
 			{
 				"pagePath": "pages/booking/booking",
-				"text": "预约",
 				"iconPath": "static/booking.png",
 				"selectedIconPath": "static/booking-active.png"
 			},
 			{
 				"pagePath": "pages/my-bookings/my-bookings",
-				"text": "我的预约",
 				"iconPath": "static/booking.png",
 				"selectedIconPath": "static/booking-active.png"
 			},
 			{
 				"pagePath": "pages/index/index",
-				"text": "我的",
 				"iconPath": "static/user.png",
 				"selectedIconPath": "static/user-active.png"
 			}

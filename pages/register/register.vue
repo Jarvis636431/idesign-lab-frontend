@@ -2,7 +2,6 @@
 	<view class="content">
 		<view class="header-section">
 			<text class="back-btn" @click="goToLogin">←</text>
-			<view class="title-text">注册账号</view>
 			<view class="tab-container">
 				<view 
 					class="tab-item" 
@@ -115,7 +114,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 40rpx 20rpx;
+	padding: 80rpx 20rpx ;
 	background-color: #D9D9D9;
 	position: relative;
 	width: 100%;
@@ -127,14 +126,43 @@ export default {
 	width: 100%;
 	background-color: #fff;
 	margin-top: -20rpx;
-	padding: 50rpx 20rpx 20rpx;
+	padding: 30rpx 20rpx 20rpx;
 	z-index: 1;
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .input-group {
 	width: 100%;
 	box-sizing: border-box;
+	flex: 1;
+}
+
+.tab-container {
+	display: flex;
+	width: 100%;
+	margin-bottom: 20rpx;
+	background-color: #D9D9D9;
+}
+
+.input-group {
+	width: 100%;
+	box-sizing: border-box;
+	flex: 0.8;
+	margin-bottom: 20rpx;
+}
+
+.register-btn {
+	width: 100%;
+	height: 90rpx;
+	line-height: 90rpx;
+	background: #6D45B8;
+	color: #fff;
+	border-radius: 45rpx;
+	margin-top: 0;
+	font-size: 32rpx;
 }
 
 .input-field {
@@ -167,7 +195,7 @@ export default {
 	background: #6D45B8;
 	color: #fff;
 	border-radius: 45rpx;
-	margin-top: 60rpx;
+	margin-top: 30rpx;
 	font-size: 32rpx;
 }
 
@@ -188,7 +216,8 @@ export default {
 	display: flex;
 	width: 100%;
 	margin-bottom: 30rpx;
-	border-bottom: 1px solid #eee;
+	/* border-bottom: 1px solid #eee; */ 
+	/* 去掉底部分割线 */
 	background-color: #D9D9D9;
 }
 
@@ -202,6 +231,8 @@ export default {
     line-height: 38.72rpx;
     letter-spacing: -0.015em;
     color: #999;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 .tab-item.active {
@@ -209,15 +240,16 @@ export default {
 }
 
 .tab-item.active::after {
-	content: '';
-	position: absolute;
-	bottom: -2rpx;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 80rpx;
-	height: 4rpx;
-	background-color: #6D45B8;
-	border-radius: 2rpx;
+    content: '';
+    position: absolute;
+    bottom: -2rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80rpx;
+    height: 4rpx;
+    background-color: #6D45B8;
+    border-radius: 2rpx;
+    transition: all 0.3s ease;
 }
 
 .tab-item.active::after {

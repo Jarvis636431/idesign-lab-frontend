@@ -50,7 +50,7 @@ export default {
 				// 登录成功后跳转到首页
 				setTimeout(() => {
 					uni.switchTab({
-						url: '/pages/home/home'
+						url: '/pages/booking/booking'
 					})
 				}, 1500)
 			} else {
