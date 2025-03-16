@@ -8,7 +8,7 @@
 			<view class="login-form">
 				<view class="form-title">登录</view>
 				<view class="input-group">
-					<input type="text" v-model="form.username" placeholder="学号/工号" class="input-field" />
+					<input type="text" v-model="form.username" placeholder="学号/工号/手机号" class="input-field" />
 					<view class="password-container">
 						<input :type="showPassword ? 'text' : 'password'" v-model="form.password" placeholder="密码" class="input-field" />
 						<text class="password-toggle" @click="togglePassword">👁</text>
@@ -42,16 +42,27 @@ export default {
 		handleLogin() {
 			// 模拟登录成功
 			if (this.form.username && this.form.password) {
-				// 实际项目中这里应该调用登录API
+				// 模拟后端返回用户类型
+				const isTeacher = /^\d{8}$/.test(this.form.username) // 假设工号为8位数字
+				
 				uni.showToast({
 					title: '登录成功',
 					icon: 'success'
 				})
-				// 登录成功后跳转到首页
+				
+				// 根据用户类型跳转到不同页面
 				setTimeout(() => {
-					uni.switchTab({
-						url: '/pages/booking/booking'
-					})
+					if (isTeacher) {
+						// 教师用户跳转到教室管理页面
+						uni.reLaunch({
+							url: '/pages/teacher-classroom/teacher-classroom'
+						})
+					} else {
+						// 学生用户跳转到预约页面
+						uni.switchTab({
+							url: '/pages/booking/booking'
+						})
+					}
 				}, 1500)
 			} else {
 				uni.showToast({

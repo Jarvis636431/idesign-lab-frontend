@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/teacher-statistics/teacher-statistics",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/register/register",
 			"style": {
 				"navigationStyle": "custom"
@@ -29,6 +35,24 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/teacher-classroom/teacher-classroom",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/teacher-bookings/teacher-bookings",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/teacher-profile/teacher-profile",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {
@@ -43,17 +67,22 @@
 		"backgroundColor": "#FFFFFF",
 		"list": [
 			{
-				"pagePath": "pages/booking/booking",
+				"pagePath": "pages/teacher-classroom/teacher-classroom",
+				"iconPath": "static/classroom.png",
+				"selectedIconPath": "static/classroom-active.png"
+			},
+			{
+				"pagePath": "pages/teacher-bookings/teacher-bookings",
 				"iconPath": "static/booking.png",
 				"selectedIconPath": "static/booking-active.png"
 			},
 			{
-				"pagePath": "pages/my-bookings/my-bookings",
-				"iconPath": "static/booking.png",
-				"selectedIconPath": "static/booking-active.png"
+				"pagePath": "pages/teacher-statistics/teacher-statistics",
+				"iconPath": "static/statistics.png",
+				"selectedIconPath": "static/statistics-active.png"
 			},
 			{
-				"pagePath": "pages/index/index",
+				"pagePath": "pages/teacher-profile/teacher-profile",
 				"iconPath": "static/user.png",
 				"selectedIconPath": "static/user-active.png"
 			}
